@@ -6,6 +6,8 @@ backend/node_modules
 frontend/node_modules
 /.pnp
 .pnp.js
+.gitignore
+.DS_Store
 
 # testing
 /coverage
