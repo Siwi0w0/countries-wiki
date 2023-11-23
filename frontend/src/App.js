@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import Search from './components/search/Search.js';
+import Search from './components/search/Search';
 
 function App() {
   const [backendData, setBackendData] = useState([{}]);
