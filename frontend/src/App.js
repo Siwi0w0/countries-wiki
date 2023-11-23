@@ -1,25 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './App.css';
-import Search from './components/search/Search';
+import SearchInput from './components/searchInput/SearchInput';
 
 function App() {
-  const [backendData, setBackendData] = useState([{}]);
-
-  useEffect(()=> {
-    fetch('/country').then(
-      response => response.json()
-    ).then (
-      data => {
-        setBackendData(data);
-      }
-    )
-  }, [])
 
   return (
-    <div className="App">
-      <Search />
+    <div>
+      <SearchInput />
     </div>
-  );
+  )
 }
 
 export default App;
