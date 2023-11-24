@@ -1,38 +1,72 @@
-import React, {useState} from 'react';
-import axios from 'axios';
+import React, { useState } from "react";
+import axios from "axios";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
-//create a search component
-const SearchInput = ({onSearchChange}) => {
-//    const [countryInfo, setCountryInfo] = useState({});
-   const [input, setInput] = useState('');
+import "./search-input.css";
 
-   //handle onChange event
-   const handleSearch = async (e) => {
-     e.preventDefault();
+// create a search component
+const SearchInput = ({ onSearchChange }) => {
+  const [input, setInput] = useState("");
+  const [error, setError] = useState("");
+  const [dataFetched, setDataFetched] = useState(false);
 
-     try {
-          input.toString();
-          const response = await axios.get(`/api/search/${encodeURIComponent(input)}`);
+  // handle onChange event
+  const handleSearch = async (e) => {
+    e.preventDefault();
 
-          //pass data to parent componet
-          onSearchChange(response.data);
-     } catch (error) {
-          console.error('Error fetching data', error);
-     };
+    try {
+      if (!input.trim()) {
+        setError("Please enter a country name.");
+        return;
+      }
 
-  }
+      const response = await axios.get(
+        `/api/search/${encodeURIComponent(input)}`,
+      );
 
-   return (
-        <form onSubmit={handleSearch}>
-        <input
-        type="text"
-        placeholder="Search a country......"
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-        />
-        <button type="submit">Search</button>
-  </form>
-    );
-}
+      if (response.data.error) {
+        setError(response.data.error);
+      } else {
+        setError("");
+        onSearchChange(response.data);
+        setInput("");
+        setDataFetched(true);
+      }
+    } catch (error) {
+      setError("Error fetching data. Please try again.");
+      console.error("Error:", error);
+    }
+  };
+
+  // clear input field
+  const handleInputChange = async (e) => {
+    setInput(e.target.value);
+    setError("");
+    setDataFetched(false);
+  };
+
+  return (
+    <container className={dataFetched ? "search-input-container data-fetched" : "search-input-container"}>
+      <h1 className="title">
+        Countries - Wiki
+      </h1>
+      <form onSubmit={handleSearch}>
+      <div className="search-bar">
+            <input
+            type="text"
+            placeholder="Search a country......"
+            value={input}
+            onChange={handleInputChange}
+            />
+            <button type="submit" className="search-btn">
+                <FontAwesomeIcon icon={faSearch} style={{color: "#647187", fontSize: "2rem"}}/>
+            </button>
+      </div>
+        {error && <p className="error-message">{error}</p>}
+      </form>
+    </container>
+  );
+};
 
 export default SearchInput;
