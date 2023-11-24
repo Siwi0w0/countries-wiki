@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import axios from 'axios';
 
-//create a search component to enable users to search for a country
+//create a search component
 const SearchInput = ({onSearchChange}) => {
 //    const [countryInfo, setCountryInfo] = useState({});
    const [input, setInput] = useState('');
@@ -11,7 +11,8 @@ const SearchInput = ({onSearchChange}) => {
      e.preventDefault();
 
      try {
-          const response = await axios.get(`/api/search/name/${input}`);
+          input.toString();
+          const response = await axios.get(`/api/search/${encodeURIComponent(input)}`);
 
           //pass data to parent componet
           onSearchChange(response.data);
