@@ -1,36 +1,29 @@
-import React, {useState} from 'react';
-import './App.css';
-import SearchInput from './components/searchInput/SearchInput';
+import React, { useState, useEffect } from "react";
+import "./App.css";
+import SearchInput from "./components/searchInput/SearchInput";
+import CountryInfo from "./components/countryInfo/CountryInfo";
 
 function App() {
-
   const [data, setData] = useState(null);
 
-  const handleSearchChange = (searchData) => {
-    // Update the data state with the search results
-    setData(searchData);
-  };
+  useEffect(() => {
+    fetch(`api/search`)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((data) => setData(data.countryInfo))
+      .catch((error) => console.error(`Error fetching data`));
+  }, []);
 
   return (
     <div className="App">
-      {/* Render data if available */}
-      {data && (
-        <div>
-          <h1>Country Information</h1>
-          {/* Display data as needed */}
-          <pre>{JSON.stringify(data, null, 2)}</pre>
-        </div>
-      )}
-
-      {/* Render your SearchInput component */}
-      <SearchInput onSearchChange={handleSearchChange} />
+      <SearchInput onSearchChange={(data) => setData(data)} />
+      <CountryInfo data={data} />
     </div>
   );
-
-    // <div>
-    //   <SearchInput onSearchChange={(data)=>setData(data)} />
-    // </div>
-
 }
 
 export default App;

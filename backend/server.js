@@ -10,15 +10,17 @@ app.get("/api/search/:name", async(req, res) => {
     console.log("Request received");
     const countryName = req.params.name;
 
-    const response = await axios.get(`https://restcountries.com/v3.1/name/${countryName}`);
+    const response = await axios.get(`https://restcountries.com/v3.1/name/${countryName}?fullText=true`);
 
     if (!response.data || !response.data[0]) {
-      throw new Error('Invalid response format');
+      return res.status(404).json({ error: 'Country not found' });
     }
 
-    const countryData = response.data[0];
+    // // If everything is okay, send the data
+    // res.status(200).json({ countryInfo });
 
     //Extract country info from the response
+    const countryData = response.data[0];
     const countryInfo = {
       name: countryData.name.common,
       fullName: countryData.name.official,
@@ -27,7 +29,6 @@ app.get("/api/search/:name", async(req, res) => {
       region: countryData.region,
       languages: countryData.languages,
       area: countryData.area,
-      flag: countryData.name.common,
       timezone: countryData.timezones[0],
     }
 
@@ -40,6 +41,8 @@ app.get("/api/search/:name", async(req, res) => {
     }
 });
 
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
 });
+
+module.exports = server;
