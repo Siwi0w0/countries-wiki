@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
-
 import "./search-input.css";
 
 // create a search component
@@ -22,7 +21,9 @@ const SearchInput = ({ onSearchChange }) => {
       }
 
       const response = await axios.get(
-        `/api/search/${encodeURIComponent(input)}`,
+        `https://countries-wiki-backend.vercel.app/api/search/${encodeURIComponent(
+          input
+        )}`
       );
 
       if (response.data.error) {
@@ -47,22 +48,29 @@ const SearchInput = ({ onSearchChange }) => {
   };
 
   return (
-    <container className={dataFetched ? "search-input-container data-fetched" : "search-input-container"}>
-      <h1 className="title">
-        Countries - Wiki
-      </h1>
+    <container
+      className={
+        dataFetched
+          ? "search-input-container data-fetched"
+          : "search-input-container"
+      }
+    >
+      <h1 className="title">Countries - Wiki</h1>
       <form onSubmit={handleSearch}>
-      <div className="search-bar">
-            <input
+        <div className="search-bar">
+          <input
             type="text"
             placeholder="Search a country......"
             value={input}
             onChange={handleInputChange}
+          />
+          <button type="submit" className="search-btn">
+            <FontAwesomeIcon
+              icon={faSearch}
+              style={{ color: "#647187", fontSize: "2rem" }}
             />
-            <button type="submit" className="search-btn">
-                <FontAwesomeIcon icon={faSearch} style={{color: "#647187", fontSize: "2rem"}}/>
-            </button>
-      </div>
+          </button>
+        </div>
         {error && <p className="error-message">{error}</p>}
       </form>
     </container>

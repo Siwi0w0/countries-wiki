@@ -19,7 +19,8 @@ const CountryInfo = ({ data }) => {
         <div className="country-info-grid">
           <ul className="info-list">
             <li className="info-detail">
-              <label className="info-label">Full name: </label>{fullName}
+              <label className="info-label">Full name: </label>
+              {fullName}
             </li>
             <li className="info-detail">
               <label className="info-label">Code: </label>
@@ -56,15 +57,3 @@ const CountryInfo = ({ data }) => {
 };
 
 export default CountryInfo;
-
-// {"countryInfo":
-//   {"name":"Ireland",
-//   "fullName":"Republic of Ireland",
-//   "code":"IE",
-//   "capital":["Dublin"],
-//   "region":"Europe",
-//   "languages":{"eng":"English","gle":"Irish"},
-//   "area":70273,
-//   "flag":"Ireland",
-//   "timezone":"UTC"}
-// }
