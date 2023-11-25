@@ -19,7 +19,8 @@ const CountryInfo = ({ data }) => {
         <div className="country-info-grid">
           <ul className="info-list">
             <li className="info-detail">
-              <label className="info-label">Full name: </label>{fullName}
+              <label className="info-label">Full name: </label>
+              {fullName}
             </li>
             <li className="info-detail">
               <label className="info-label">Code: </label>
