@@ -1,6 +1,14 @@
 const express = require("express");
 const axios = require("axios");
 
+const cors = require('cors');
+// Allow all origins
+app.use(cors());
+// Allow specific origin(s)
+app.use(cors({
+  origin: 'https://countries-wiki-frontend.vercel.app/'
+}));
+
 const PORT = process.env.PORT || 3001;
 const app = express();
 
