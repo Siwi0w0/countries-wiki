@@ -22,7 +22,7 @@ const SearchInput = ({ onSearchChange }) => {
       }
 
       const response = await axios.get(
-        `/api/search/${encodeURIComponent(input)}`,
+        `https://countries-wiki-backend.vercel.app/api/search/${encodeURIComponent(input)}`,
       );
 
       if (response.data.error) {
