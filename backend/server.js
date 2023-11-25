@@ -5,7 +5,7 @@ const cors = require("cors");
 // Allow specific origin(s)
 app.use(
   cors({
-    origin: "https://countries-wiki-frontend.vercel.app/",
+    origin: "https://countries-wiki-frontend.vercel.app",
   })
 );
 
