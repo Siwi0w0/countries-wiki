@@ -56,15 +56,3 @@ const CountryInfo = ({ data }) => {
 };
 
 export default CountryInfo;
-
-// {"countryInfo":
-//   {"name":"Ireland",
-//   "fullName":"Republic of Ireland",
-//   "code":"IE",
-//   "capital":["Dublin"],
-//   "region":"Europe",
-//   "languages":{"eng":"English","gle":"Irish"},
-//   "area":70273,
-//   "flag":"Ireland",
-//   "timezone":"UTC"}
-// }

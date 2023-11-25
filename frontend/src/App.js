@@ -7,7 +7,7 @@ function App() {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    fetch(`api/search`)
+    fetch(`https://countries-wiki-backend.vercel.app/api/search`)
       .then((response) => {
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
