@@ -4,11 +4,11 @@ const cors = require("cors");
 
 const app = express();
 
+// Enable CORS for all routes
+app.use(cors());
+
 //Create endpoint for fetching country info
-app.get("/api/search/:name", cors({
-  origin: "https://countries-wiki-frontend.vercel.app",
-}),
-  async (req, res) => {
+app.get("/api/search/:name", async (req, res) => {
   try {
     console.log("Request received");
     const countryName = req.params.name;
