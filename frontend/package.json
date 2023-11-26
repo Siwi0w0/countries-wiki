@@ -1,5 +1,5 @@
 {
-  "name": "client",
+  "name": "countries-wiki-frontend",
   "version": "0.1.0",
   "homepage": "https://countries-wiki-frontend.vercel.app/",
   "private": true,

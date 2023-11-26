@@ -1,5 +1,5 @@
 {
-  "name": "countries-wiki",
+  "name": "countries-wiki-backend",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -8,8 +8,8 @@
   },
   "scripts": {
     "test": "jest",
-    "start": "node server/server.js",
-    "dev": "nodemon server/server.js"
+    "start": "node backend/server.js",
+    "build": "cd frontend && npm install && npm run build"
   },
   "jest": {
     "testEnvironment": "node",
