@@ -2,7 +2,6 @@ const express = require("express");
 const axios = require("axios");
 const cors = require("cors");
 
-const PORT = process.env.PORT || 3001;
 const app = express();
 
 //Create endpoint for fetching country info
@@ -42,6 +41,8 @@ app.get("/api/search/:name", cors({
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
+
+const PORT = process.env.PORT || 3001;
 
 const server = app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
