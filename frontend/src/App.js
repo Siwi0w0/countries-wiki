@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import "./App.css";
 import SearchInput from "./components/searchInput/SearchInput";
 import CountryInfo from "./components/countryInfo/CountryInfo";
@@ -6,21 +6,13 @@ import CountryInfo from "./components/countryInfo/CountryInfo";
 function App() {
   const [data, setData] = useState(null);
 
-  useEffect(() => {
-    fetch(`https://countries-wiki-backend.vercel.app/api/search`)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then((data) => setData(data.countryInfo))
-      .catch((error) => console.error(`Error fetching data`));
-  }, []);
+  const handleSearchChange = (newData) => {
+    setData(newData);
+  };
 
   return (
     <div className="App">
-      <SearchInput onSearchChange={(data) => setData(data)} />
+      <SearchInput onSearchChange={handleSearchChange} />
       <CountryInfo data={data} />
     </div>
   );
