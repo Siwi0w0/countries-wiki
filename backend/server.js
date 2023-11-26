@@ -18,7 +18,7 @@ app.get("/api/search/:name", async (req, res) => {
     );
 
     if (!response.data || !response.data[0]) {
-      return res.status(404).json({ error: "Country not found" });
+      return res.status(404).json({ error: "Invalid Country name" });
     }
 
     //Extract country info from the response
