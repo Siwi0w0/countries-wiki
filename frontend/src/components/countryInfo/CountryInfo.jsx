@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./country-info.css";
 
 const CountryInfo = ({ data }) => {
@@ -13,7 +13,7 @@ const CountryInfo = ({ data }) => {
   const flagURL = `https://flagcdn.com/w320/${code.toLowerCase()}.png`;
 
   return (
-    <container className="countryinfo">
+    <Container className="countryinfo">
       <div className="country-info-card">
         <h2 className="country-name">{name}</h2>
         <div className="country-info-grid">
@@ -52,7 +52,7 @@ const CountryInfo = ({ data }) => {
           <img src={flagURL} alt={`Flag of ${name}`} className="country-flag" />
         </div>
       </div>
-    </container>
+    </Container>
   );
 };
 

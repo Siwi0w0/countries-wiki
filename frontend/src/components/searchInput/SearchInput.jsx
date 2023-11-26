@@ -46,7 +46,7 @@ const SearchInput = ({ onSearchChange }) => {
   };
 
   return (
-    <container
+    <Container
       className={
         dataFetched
           ? "search-input-container data-fetched"
@@ -71,7 +71,7 @@ const SearchInput = ({ onSearchChange }) => {
         </div>
         {error && <p className="error-message">{error}</p>}
       </form>
-    </container>
+    </Container>
   );
 };
 

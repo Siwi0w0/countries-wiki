@@ -1,23 +1,15 @@
 const express = require("express");
 const axios = require("axios");
+const cors = require("cors");
 
 const PORT = process.env.PORT || 3001;
 const app = express();
 
-const cors = require("cors");
-
-// Allow all origins
-app.use(cors());
-
-// // Allow only frontend origin
-// app.use(
-//   cors({
-//     origin: "https://countries-wiki-frontend.vercel.app",
-//   })
-// );
-
 //Create endpoint for fetching country info
-app.get("/api/search/:name", async (req, res) => {
+app.get("/api/search/:name", cors({
+  origin: "https://countries-wiki-frontend.vercel.app",
+}),
+  async (req, res) => {
   try {
     console.log("Request received");
     const countryName = req.params.name;
