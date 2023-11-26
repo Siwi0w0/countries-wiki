@@ -1,6 +1,9 @@
 const express = require("express");
 const axios = require("axios");
 
+const PORT = process.env.PORT || 3001;
+const app = express();
+
 const cors = require("cors");
 
 // Allow all origins
@@ -12,9 +15,6 @@ app.use(cors());
 //     origin: "https://countries-wiki-frontend.vercel.app",
 //   })
 // );
-
-const PORT = process.env.PORT || 3001;
-const app = express();
 
 //Create endpoint for fetching country info
 app.get("/api/search/:name", async (req, res) => {
@@ -29,9 +29,6 @@ app.get("/api/search/:name", async (req, res) => {
     if (!response.data || !response.data[0]) {
       return res.status(404).json({ error: "Country not found" });
     }
-
-    // If everything is okay, send the data
-    res.status(200).json({ countryInfo });
 
     //Extract country info from the response
     const countryData = response.data[0];
