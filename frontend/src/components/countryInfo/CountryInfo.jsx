@@ -13,7 +13,7 @@ const CountryInfo = ({ data }) => {
   const flagURL = `https://flagcdn.com/w320/${code.toLowerCase()}.png`;
 
   return (
-    <Container className="countryinfo">
+    <container className="countryinfo">
       <div className="country-info-card">
         <h2 className="country-name">{name}</h2>
         <div className="country-info-grid">
@@ -52,7 +52,7 @@ const CountryInfo = ({ data }) => {
           <img src={flagURL} alt={`Flag of ${name}`} className="country-flag" />
         </div>
       </div>
-    </Container>
+    </container>
   );
 };
 

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Container } from 'react-bootstrap';
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
@@ -46,7 +47,7 @@ const SearchInput = ({ onSearchChange }) => {
   };
 
   return (
-    <Container
+    <container
       className={
         dataFetched
           ? "search-input-container data-fetched"
@@ -71,7 +72,7 @@ const SearchInput = ({ onSearchChange }) => {
         </div>
         {error && <p className="error-message">{error}</p>}
       </form>
-    </Container>
+    </container>
   );
 };
 

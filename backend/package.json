@@ -9,7 +9,8 @@
   "scripts": {
     "test": "jest",
     "start": "node backend/server.js",
-    "build": "cd frontend && npm install && npm run build"
+    "build": "npm run frontend:build",
+    "frontend:build": "cd frontend && npm run build"
   },
   "jest": {
     "testEnvironment": "node",
