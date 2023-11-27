@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import "./App.css";
 import SearchInput from "./components/searchInput/SearchInput";
 import CountryInfo from "./components/countryInfo/CountryInfo";

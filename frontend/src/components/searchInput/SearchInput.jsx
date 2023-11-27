@@ -25,15 +25,15 @@ const SearchInput = ({ onSearchChange }) => {
       const response = await axios.get(
         `${apiUrl}${encodeURIComponent(input)}`,
       );
-      const data = response.data;
 
       console.log("Server response:", response.data);
 
-      if (data.error && data.error === "Invalid country name") {
+      if (response.data.error && response.data.error === "Invalid country name") {
         setError("Invalid country name. Please try again.");
+        return;
       } else {
         setError("");
-        onSearchChange(data.countryInfo);
+        onSearchChange(dataFetched ? null : response.data);
         setInput("");
         setDataFetched(true);
       }

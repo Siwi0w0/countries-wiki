@@ -2,7 +2,9 @@ import React from "react";
 import "./country-info.css";
 
 const CountryInfo = ({ data }) => {
+
   if (!data || !data.countryInfo) {
+    console.error("No data received.");
     return null;
   }
 
@@ -14,8 +16,8 @@ const CountryInfo = ({ data }) => {
 
   return (
     <>
-    <div className="countryinfo">
-      <div className="country-info-card">
+    <div className="countryinfo-container">
+    <div className="country-info-card" style={{ display: 'flex', justifyContent: 'space-between', backgroundColor: 'rgb(255, 255, 255)', padding: '2rem', borderRadius: '20px' }}>
         <h2 className="country-name">{name}</h2>
         <div className="country-info-grid">
           <ul className="info-list">
@@ -48,8 +50,6 @@ const CountryInfo = ({ data }) => {
               {Object.values(languages).join(", ")}
             </li>
           </ul>
-
-          {/* Display flag as an image */}
           <img src={flagURL} alt={`Flag of ${name}`} className="country-flag" />
         </div>
       </div>
