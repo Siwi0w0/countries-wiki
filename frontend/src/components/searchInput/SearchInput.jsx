@@ -25,20 +25,21 @@ const SearchInput = ({ onSearchChange }) => {
       const response = await axios.get(
         `${apiUrl}${encodeURIComponent(input)}`,
       );
+      const data = response.data;
 
       console.log("Server response:", response.data);
 
-      if (response.data.error && response.data.error === "Country not found") {
-        setError("Country not found");
-        return;
+      if (data.error && data.error === "Invalid country name") {
+        setError("Invalid country name. Please try again.");
       } else {
         setError("");
-        onSearchChange(response.data);
+        onSearchChange(data.countryInfo);
         setInput("");
         setDataFetched(true);
       }
     } catch (error) {
-      console.error("Error:", error);
+      console.error("Error:", error.message);
+      setError("An unexpected error occurred. Please try again.");
     }
   };
 

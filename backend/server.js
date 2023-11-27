@@ -42,7 +42,7 @@ app.get("/api/search/:name", async (req, res) => {
     if (error.response && error.response.status === 404) {
       return res.status(404).json({ error: "Invalid country name" });
     } else {
-      return res.status(500).json({ error: "Internal Server Error" });
+      res.status(500).json({ error: "Internal Server Error" });
     }
   }
 });
