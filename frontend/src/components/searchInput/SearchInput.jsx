@@ -33,7 +33,6 @@ const SearchInput = ({ onSearchChange }) => {
         setDataFetched(true);
       }
     } catch (error) {
-      setError("Error fetching data. Please try again.");
       console.error("Error:", error);
     }
   };
@@ -46,6 +45,7 @@ const SearchInput = ({ onSearchChange }) => {
   };
 
   return (
+    <>
     <container
       className={
         dataFetched
@@ -72,6 +72,7 @@ const SearchInput = ({ onSearchChange }) => {
         {error && <p className="error-message">{error}</p>}
       </form>
     </container>
+    </>
   );
 };
 

@@ -16,10 +16,6 @@ app.get("/api/search/:name", async (req, res) => {
       `https://restcountries.com/v3.1/name/${countryName}?fullText=true`
     );
 
-    if (!response.data || !response.data[0]) {
-      return res.status(404).json({ error: "Invalid Country name" });
-    }
-
     //Extract country info from the response
     const countryData = response.data[0];
     const countryInfo = {
@@ -36,8 +32,15 @@ app.get("/api/search/:name", async (req, res) => {
     // Send contry info back to the frontend as JSON
     res.json({ countryInfo });
   } catch (error) {
-    console.log(error);
-    res.status(500).json({ error: "Internal Server Error" });
+    console.error(`Error processing request for country name: ${req.params.name}`);
+    console.error(error);
+
+    // Handle specific error cases
+    if (error.response && error.response.status === 404) {
+      res.status(404).json({ error: "Country not found" });
+    } else {
+      res.status(500).json({ error: "Internal Server Error" });
+    }
   }
 });
 
