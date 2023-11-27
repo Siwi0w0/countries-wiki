@@ -49,7 +49,7 @@ Use the search bar to look up information about countries.
 The application uses the REST countries API to fetch country information.
 
 ## Deployment
-The project is deployed using Vercel and Render. The backend is hosted at [https://countries-wiki-backend.vercel.app/](https://countries-wiki-backend.onrender.com/) and the frontend at [https://countries-wiki-frontend.vercel.app/](https://countries-wiki-frontend.vercel.app/).
+The project is deployed using Vercel and Render. The backend is hosted at [https://countries-wiki-backend.onrender.com/](https://countries-wiki-backend.onrender.com/) and the frontend at [https://countries-wiki-frontend.vercel.app/](https://countries-wiki-frontend.vercel.app/).
 
 ## Built with
 - Node.js
