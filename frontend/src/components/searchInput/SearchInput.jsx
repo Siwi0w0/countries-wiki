@@ -4,6 +4,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import "./search-input.css";
 
+const apiUrl = 'https://countries-wiki-backend.onrender.com/api/search/';
+
 // create a search component
 const SearchInput = ({ onSearchChange }) => {
   const [input, setInput] = useState("");
@@ -21,11 +23,14 @@ const SearchInput = ({ onSearchChange }) => {
       }
 
       const response = await axios.get(
-        `https://countries-wiki-backend.onrender.com/api/search/${encodeURIComponent(input)}`,
+        `${apiUrl}${encodeURIComponent(input)}`,
       );
 
-      if (response.data.error) {
-        setError(response.data.error);
+      console.log("Server response:", response.data);
+
+      if (response.data.error && response.data.error === "Country not found") {
+        setError("Country not found");
+        return;
       } else {
         setError("");
         onSearchChange(response.data);
@@ -46,7 +51,7 @@ const SearchInput = ({ onSearchChange }) => {
 
   return (
     <>
-    <container
+    <div
       className={
         dataFetched
           ? "search-input-container data-fetched"
@@ -71,7 +76,7 @@ const SearchInput = ({ onSearchChange }) => {
         </div>
         {error && <p className="error-message">{error}</p>}
       </form>
-    </container>
+    </div>
     </>
   );
 };

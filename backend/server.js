@@ -32,7 +32,7 @@ app.get("/api/search/:name", async (req, res) => {
       timezone: countryData.timezones[0],
     };
 
-    // Send contry info back to the frontend as JSON
+    // Send country info back to the frontend as JSON
     res.json({ countryInfo });
   } catch (error) {
     console.error(`Error processing request for country name: ${req.params.name}`);
@@ -40,9 +40,9 @@ app.get("/api/search/:name", async (req, res) => {
 
     // Handle specific error cases
     if (error.response && error.response.status === 404) {
-      res.status(404).json({ error: "Country not found" });
+      return res.status(404).json({ error: "Invalid country name" });
     } else {
-      res.status(500).json({ error: "Internal Server Error" });
+      return res.status(500).json({ error: "Internal Server Error" });
     }
   }
 });
