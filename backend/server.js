@@ -16,6 +16,8 @@ app.get("/api/search/:name", async (req, res) => {
       `https://restcountries.com/v3.1/name/${countryName}?fullText=true`
     );
 
+    console.log("Response from external API:", response.data);
+
     //Extract country info from the response
     const countryData = response.data[0];
     const countryInfo = {
