@@ -21,7 +21,7 @@ const SearchInput = ({ onSearchChange }) => {
       }
 
       const response = await axios.get(
-        `https://countries-wiki-backend.vercel.app/api/search/${encodeURIComponent(input)}`,
+        `https://countries-wiki-backend.onrender.com/api/search/${encodeURIComponent(input)}`,
       );
 
       if (response.data.error) {
