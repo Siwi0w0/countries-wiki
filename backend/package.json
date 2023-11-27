@@ -9,9 +9,8 @@
   "scripts": {
     "test": "jest",
     "start": "nodemon server.js",
-    "lint": "eslint .",
-    "build": "npm run lint && npm run frontend:build",
-    "frontend:build": "cd ../frontend && npm run build"
+    "dev": "nodemon server.js",
+    "build": "npm install"
   },
   "jest": {
     "testEnvironment": "node",

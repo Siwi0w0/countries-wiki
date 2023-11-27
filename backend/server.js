@@ -3,6 +3,7 @@ const axios = require("axios");
 const cors = require("cors");
 
 const app = express();
+const port = process.env.PORT || 3001;
 
 app.use(cors());
 
@@ -46,10 +47,6 @@ app.get("/api/search/:name", async (req, res) => {
   }
 });
 
-const PORT = process.env.PORT || 3001;
-
-const server = app.listen(PORT, () => {
-  console.log(`Server listening on ${PORT}`);
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
 });
-
-module.exports = server;
