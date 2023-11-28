@@ -54,3 +54,19 @@
   margin-top: 0.5rem;
   margin-left: 0.5rem;
 }
+
+@media screen and (max-width: 480px) {
+  .title {
+    font-size: 32px;
+  }
+
+  .search-input-container {
+    width: 80%;
+    margin-top: 14rem;
+  }
+  .search-input-container.data-fetched {
+    width: 80%;
+    margin-top: 6rem;
+  }
+
+}

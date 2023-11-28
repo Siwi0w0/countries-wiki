@@ -44,3 +44,45 @@
   margin-right: 0;
   border: 2px solid #7e7e7e;
 }
+
+@media screen and (max-width: 600px) {
+  .countryinfo-container {
+    width: 80%;
+    margin-top: 1rem;
+  }
+
+  .country-info-card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    padding: 1rem;
+    border-radius: 20px;
+  }
+
+  .country-info-grid {
+    margin-right: 0;
+    margin-top: 0.5rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .info-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .country-name {
+    font-size: 1.2rem;
+  }
+
+  .country-flag {
+    width: auto;
+    height: 120px;
+    justify-content: center;
+    margin-top: 1rem;
+    margin-right: 0;
+    margin-bottom: 2rem;
+    border: 2px solid #7e7e7e;
+  }
+}

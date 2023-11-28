@@ -17,7 +17,7 @@ const CountryInfo = ({ data }) => {
   return (
     <>
     <div className="countryinfo-container">
-    <div className="country-info-card" style={{ display: 'flex', justifyContent: 'space-between', backgroundColor: 'rgb(255, 255, 255)', padding: '2rem', borderRadius: '20px' }}>
+    <div className="country-info-card">
         <h2 className="country-name">{name}</h2>
         <div className="country-info-grid">
           <ul className="info-list">
