@@ -39,7 +39,7 @@ const CountryInfo = ({ data }) => {
             </li>
             <li className="info-detail">
               <label className="info-label">Area: </label>
-              {area}
+              {area} km&sup2;
             </li>
             <li className="info-detail">
               <label className="info-label">Timezone: </label>
